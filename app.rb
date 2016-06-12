@@ -1,5 +1,6 @@
 require 'colorize'
 require 'chronic'
+require 'highline'
 # Find a third gem of your choice and add it to your project
 require 'date'
 require_relative "lib/listable"
@@ -45,3 +46,34 @@ new_list.all
 # DEMO FILTER BY ITEM TYPE
 # ------------------------
 new_list.filter("event")
+
+
+# Demo Highline gem use to capture user data and list addition
+#--------------------------------------------------------------
+cli = HighLine.new
+VALID_EMAIL_REGEX = /\A([\w+\-]\.?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+name = cli.ask("Please type in your name below".colorize(:green))
+email = cli.ask("Please type in your email :".colorize(:yellow)) do  |q|
+  q.responses[:not_valid] = "Not a valid email, please re-enter below"
+  q.validate = VALID_EMAIL_REGEX
+end
+puts "Your name is: #{name.capitalize}".colorize(:magenta)
+puts "Your Email is : #{email}"
+
+
+menu_choice = cli.choose do |menu|
+  menu.prompt = "Please choose which type of list you need to create by typing he corresponding number  "
+  menu.choices(:event, :link, :todo)
+end
+
+case menu_choice.to_s
+when "todo"
+  description = cli.ask("Please Type in the Todo List title or just enter for unnamed list")
+  due = cli.ask("Please enter date or when todo item is due for ex 'in 2 weeks'")
+  priority = cli.choose do |menu|
+    menu.prompt = "Please priority of item by typing he corresponding number"
+    menu.choices(:low, :medium, :high, "")
+  end
+  
+
+end

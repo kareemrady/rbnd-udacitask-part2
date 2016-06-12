@@ -2,12 +2,17 @@
 # -------------------------------------------------------
 1. What is the gem of your choice and how did you use it?
 2. Describe the 2 features you added to the project.
-  a) Feature 1...
-  b) Feature 2...
+  allow list creation from the command line & ask user to input email using highline gem
+  send an email to user with email gem
 
 # REFLECTIONS
 # -------------------------------------------------------
 1. How long did you spend working on this project?
+6 hrs
 2. What was the most rewarding challenge you conquered?
+implementing the mal gem was very challenging but rewarding
 3. What two additional features did you build? Why?
+allow list creation from the command line & ask user to input email using highline gem
+send an email to user with email gem
 4. Where do you still have room to grow?
+the idea of using modules to modularize my code and make it easier to change - needs more practice
