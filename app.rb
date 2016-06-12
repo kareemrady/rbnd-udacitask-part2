@@ -1,5 +1,5 @@
-require 'chronic'
 require 'colorize'
+require 'chronic'
 # Find a third gem of your choice and add it to your project
 require 'date'
 require_relative "lib/listable"
