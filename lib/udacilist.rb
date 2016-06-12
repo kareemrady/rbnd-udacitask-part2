@@ -1,4 +1,4 @@
-require_relative 'errors'
+
 class UdaciList
   attr_reader :title, :items
 
@@ -35,11 +35,37 @@ class UdaciList
   end
 end
   def all
-    puts "-" * @title.length
-    puts @title
-    puts "-" * @title.length
+    print_header(@title)
     @items.each_with_index do |item, position|
       puts "#{position + 1}) #{item.details}"
     end
   end
+  def filter(type)
+    #raise error if invalid type entered\
+    types_hash = {event: EventItem, link: LinkItem, todo: TodoItem}
+    if !types_hash.keys.include?(type.to_sym)
+      begin
+        raise UdaciListErrors::InvalidTypeError, "Invalid Type Error"
+      rescue Exception => error
+        puts error
+      end
+    else
+      type_sym = type.to_sym
+      print_header(type.capitalize + "s" , {message: "Filtered List of " })
+      @items.select {|item| item.class == types_hash[type_sym] }.each {|item| puts item.details}
+      #dont repeat urself
+      # @items.select{|item| item.class == EventItem}.each {|item| puts item.details} if type == "event"
+      # @items.select{|item| item.class == TodoItem}.each {|item| puts item.details} if type == "todo"
+      # @items.select{|item| item.class == LinkItem}.each {|item| puts item.details} if type == "link"
+    end
+  end
+  private
+
+  def print_header(header, options = {})
+    message = options[:message] || ""
+    puts "-" * header.length
+    puts message + header
+    puts "-" * header.length
+  end
+
 end
