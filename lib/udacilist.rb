@@ -63,9 +63,9 @@ end
 
   def print_header(header, options = {})
     message = options[:message] || ""
-    puts "-" * header.length
+    puts "-" * (header+message).length
     puts message + header
-    puts "-" * header.length
+    puts "-" * (header+message).length
   end
 
 end
