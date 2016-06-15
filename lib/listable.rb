@@ -20,13 +20,13 @@ module Listable
 
   def format_priority(priority)
     priority_list = ["high", "medium", "low", nil]
-    if (!priority_list.include?(priority))
+    unless priority_list.include?(priority)
       begin
         raise UdaciListErrors::InvalidPriorityValue, "Invalid Priority Value Error"
       rescue Exception => error
+        puts error
         #essential to not break the details function if the priority value is invalid it will just print the error and show the todo item with priority = ""
         return value = ""
-        puts error
       end
     else
       value = " ⇧".colorize(:green) if priority == "high"

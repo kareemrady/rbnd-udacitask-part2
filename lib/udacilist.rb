@@ -43,9 +43,9 @@ end
   def filter(type)
     #raise error if invalid type entered\
     types_hash = {event: EventItem, link: LinkItem, todo: TodoItem}
-    if !types_hash.keys.include?(type.to_sym)
+    unless types_hash.keys.include?(type.to_sym)
       begin
-        raise UdaciListErrors::InvalidTypeError, "Invalid Type Error"
+        raise UdaciListErrors::InvalidTypeError, "InvalidType Error"
       rescue Exception => error
         puts error
       end

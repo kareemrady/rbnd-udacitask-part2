@@ -1,7 +1,7 @@
 require 'colorize'
 require 'chronic'
 require 'highline'
-# Find a third gem of your choice and add it to your project
+
 require 'date'
 require_relative "lib/listable"
 require_relative "lib/errors"
@@ -108,7 +108,7 @@ def create_list_from_cli
         cli_list.add("event", description, start_date: start_date, end_date: end_date)
 
       end
-      
+
       add_more_items = cli.ask("Add new item , [Y] or [N]")
       break if add_more_items.capitalize == "N"
 

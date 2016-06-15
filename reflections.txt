@@ -1,6 +1,7 @@
 # What you added to Udacitask 2.0
 # -------------------------------------------------------
 1. What is the gem of your choice and how did you use it?
+  Highline used it to allow a user to create items and lists from the command line
 2. Describe the 2 features you added to the project.
   allow list creation from the command line
   created a user class to capture lists and print all lists for a given user
